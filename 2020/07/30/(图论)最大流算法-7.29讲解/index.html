@@ -7,12 +7,12 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content=":title（图论）最大流算法-7.29 讲解  最大流算法网络流基础概念网络流在一个有向图G&#x3D;(V,E)G&#x3D;(V,E)中： 有一个唯一的源点S(入度为00：出发点)有一个唯一的汇点T(出度为00：结束点)图中的每一条边都一个非负的权值，这个权值叫做容量c(u,v)c(u,v)满足上述条件的图GG称为网络流图，记为G&#x3D;(V,E,C)G&#x3D;(V,E,C) 可以想象成，如果把每条边都看成一个管道，可以看">
+  <meta name="description" content="##（图论）最大流算法-7.29 讲解  最大流算法网络流基础概念网络流在一个有向图G&#x3D;(V,E)G&#x3D;(V,E)中： 有一个唯一的源点S(入度为00：出发点)有一个唯一的汇点T(出度为00：结束点)图中的每一条边都一个非负的权值，这个权值叫做容量c(u,v)c(u,v)满足上述条件的图GG称为网络流图，记为G&#x3D;(V,E,C)G&#x3D;(V,E,C) 可以想象成，如果把每条边都看成一个管道，可以看成是水从">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/2020/07/30/(%E5%9B%BE%E8%AE%BA)%E6%9C%80%E5%A4%A7%E6%B5%81%E7%AE%97%E6%B3%95-7.29%E8%AE%B2%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=":title（图论）最大流算法-7.29 讲解  最大流算法网络流基础概念网络流在一个有向图G&#x3D;(V,E)G&#x3D;(V,E)中： 有一个唯一的源点S(入度为00：出发点)有一个唯一的汇点T(出度为00：结束点)图中的每一条边都一个非负的权值，这个权值叫做容量c(u,v)c(u,v)满足上述条件的图GG称为网络流图，记为G&#x3D;(V,E,C)G&#x3D;(V,E,C) 可以想象成，如果把每条边都看成一个管道，可以看">
+<meta property="og:description" content="##（图论）最大流算法-7.29 讲解  最大流算法网络流基础概念网络流在一个有向图G&#x3D;(V,E)G&#x3D;(V,E)中： 有一个唯一的源点S(入度为00：出发点)有一个唯一的汇点T(出度为00：结束点)图中的每一条边都一个非负的权值，这个权值叫做容量c(u,v)c(u,v)满足上述条件的图GG称为网络流图，记为G&#x3D;(V,E,C)G&#x3D;(V,E,C) 可以想象成，如果把每条边都看成一个管道，可以看成是水从">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200729200237530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODQxMjM5,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200729200407863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODQxMjM5,size_16,color_FFFFFF,t_70">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200729201621546.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200729201639667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODQxMjM5,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-07-30T02:11:17.275Z">
-<meta property="article:modified_time" content="2020-07-30T02:14:56.394Z">
+<meta property="article:modified_time" content="2020-07-30T02:21:15.556Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200729200237530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODQxMjM5,size_16,color_FFFFFF,t_70">
@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>:title（图论）最大流算法-7.29 讲解 </p>
+        <p>##（图论）最大流算法-7.29 讲解 </p>
 <h2 id="最大流算法"><a href="#最大流算法" class="headerlink" title="最大流算法"></a>最大流算法</h2><h2 id="网络流基础概念"><a href="#网络流基础概念" class="headerlink" title="网络流基础概念"></a>网络流基础概念</h2><h2 id="网络流"><a href="#网络流" class="headerlink" title="网络流"></a>网络流</h2><p>在一个有向图G=(V,E)G=(V,E)中：</p>
 <p>有一个唯一的源点S(入度为00：出发点)<br>有一个唯一的汇点T(出度为00：结束点)<br>图中的每一条边都一个非负的权值，这个权值叫做容量c(u,v)c(u,v)<br>满足上述条件的图GG称为网络流图，记为G=(V,E,C)G=(V,E,C)</p>
 <p>可以想象成，如果把每条边都看成一个管道，可以看成是水从源点S出发经过这些管道，最终流向汇点T，而每条管道有最大的容量。（地下排水管道）</p>
