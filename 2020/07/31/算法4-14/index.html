@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>算法4.14 | linblog</title><meta name="description" content="1、wiggle subsequenceA sequence of numbers is called a wiggle sequence if the differences between successive numbers strictly alternate between positive and negative. The first difference (if one exist"><meta name="author" content="linblock,2218684601@qq.com"><meta name="copyright" content="linblock"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lzxandcyx.cn/2020/07/31/%E7%AE%97%E6%B3%954-14/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="算法4.14"><meta property="og:url" content="http://lzxandcyx.cn/2020/07/31/%E7%AE%97%E6%B3%954-14/"><meta property="og:site_name" content="linblog"><meta property="og:description" content="1、wiggle subsequenceA sequence of numbers is called a wiggle sequence if the differences between successive numbers strictly alternate between positive and negative. The first difference (if one exist"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-07-31T09:56:43.000Z"><meta property="article:modified_time" content="2020-07-31T09:57:11.700Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="算法4.7" href="http://lzxandcyx.cn/2020/07/31/%E7%AE%97%E6%B3%954-7/"><link rel="next" title="算法4.20" href="http://lzxandcyx.cn/2020/07/31/%E7%AE%97%E6%B3%954-20/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: false
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.0"></head><body><canvas class="fireworks"></canvas><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 杂</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 常用网站</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">linblog</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 杂</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 常用网站</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">算法4.14</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2020-07-31 17:56:43"><i class="far fa-calendar-alt fa-fw"></i> Created 2020-07-31</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2020-07-31 17:57:11"><i class="fas fa-history fa-fw"></i> Updated 2020-07-31</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta__icon"></i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>1、wiggle subsequence<br>A sequence of numbers is called a wiggle sequence if the differences between successive numbers strictly alternate between positive and negative. The first difference (if one exists) may be either positive or negative. A sequence with fewer than two elements is trivially a wiggle sequence.</p>
+<p>For example, [1,7,4,9,2,5] is a wiggle sequence because the differences (6,-3,5,-7,3) are alternately positive and negative. In contrast, [1,4,7,2,5] and [1,7,4,5,5] are not wiggle sequences, the first because its first two differences are positive and the second because its last difference is zero.</p>
+<p>Given a sequence of integers, return the length of the longest subsequence that is a wiggle sequence. A subsequence is obtained by deleting some number of elements (eventually, also zero) from the original sequence, leaving the remaining elements in their original order.</p>
+<p>Example 1:</p>
+<p>Input: [1,7,4,9,2,5]<br>Output: 6<br>Explanation: The entire sequence is a wiggle sequence.<br>Example 2:</p>
+<p>Input: [1,17,5,10,13,15,10,5,16,8]<br>Output: 7<br>Explanation: There are several subsequences that achieve this length. One is [1,17,10,13,10,16,8].<br>Example 3:</p>
+<p>Input: [1,2,3,4,5,6,7,8,9]<br>Output: 2</p>
+<p>解题思路：对于这道题首先想到的就是用对给出的整个整数序列切片，找到每一个上升下降交替的小子序列，加起来就是最后的最长的子序列，因为题目中给出了可以随意删除一些元素来找到那个最大的子序列，可以使用回溯算法：<br>Python：<br>class Solution:<br>    def calcuate(self,nums,index,isup):<br>        maxcount = 0<br>        for i in range(index+1,len(nums)):<br>            if (((not isup) and nums[i])&gt;nums[index]) or (((isup) and nums[i])&lt;nums[index]):#判断条件是上升序列还是下降的，相当于将符合条件的每一个小子序列全部都切出来<br>                maxcount = max(maxcount,1+self.calcuate(nums,i,not isup))#递归回溯，找到上升下降交替的序列<br>        return maxcount<br>    def wiggleMaxLength(self, nums: List[int]) -&gt; int:<br>        if (len(nums)&lt;2):<br>            return len(nums)<br>        return 1+max(self.calcuate(nums,0,True),self.calcuate(nums,0,False))#判断从头开始上升还是下降的序列更多</p>
+<p>第二个思路使用动态规划思想，将给定的整个序列想象成一个个波峰与波谷，在每一个序列值处，索引看作横坐标轴，序列值看作为竖坐标值，求解最大摆动序列的值，可以看作，求这张图里面的波峰波谷数量为多少，使用两个数组来保存状态，一个数组用来保存上升的序列值，也就是波峰的数量，而且在添加这个数组时，必须要满足此时的横坐标值要大于另外一个数组的波谷数量，而且此时的序列值要大于前一个波谷值，另一个数组同样。<br>Python：<br>class Solution:<br>    def wiggleMaxLength(self, nums: List[int]) -&gt; int:<br>        if (len(nums)&lt;2) :<br>            return len(nums)<br>        up = []<br>        down = []<br>        for i in range(len(nums)):#初始化数组<br>            up.append(0)<br>        for i in range(len(nums)):<br>            down.append(0)<br>        for i in range(len(nums)):<br>            for j in range(i):<br>                if nums[i]&gt;nums[j]:<br>                    up[i] = max(up[i],down[j]+1)#增长递增数列的长度<br>                elif nums[i] &lt;nums[j]:<br>                    down[i] = max(down[i],up[j]+1)#增长递减数列的长度<br>        return 1+ max(down[len(nums)-1],up[len(nums)-1])</p>
+<p>2、<br>斐波那契数列：<br>Garlic King likes to climb stairs very much, this time, he obtains a special power, each time can jump any odd number of stairs. For example, he was initially at the bottom of the building, crossing-stairs to ladder 1, or across three stairs to ladder 3. As shown below</p>
+<p>In order to choose one of the easiest ways to climb the stairs, garlic wants to try all the different ways to get to the top of the building. For-there are n steps of stairs, garlic King-how many general ways to get to the top of the building from the bottom of the building.</p>
+<p>Since the final answer may be large, output the final answer to the result of the 100007 model.</p>
+<p>Input format</p>
+<p>The first line enters an integer n (1 ≤ n ≤ 1000).</p>
+<p>Output format</p>
+<p>Output the result of the final answer for 100007 of the model.</p>
+<p>Sample input</p>
+<p>4</p>
+<p>Out</p>
+<p>3</p>
+<p>解题思路：额，，，对你没看错，这就是那个蒜头爬楼梯的，就是斐波那契数列，嗯，，，用python有许多各式各样的优化求解速度的代码，现在在这里整理一下这些方法，拓展一下思路。<br>第一种是递归，因为重复求值比较多，所以递归求解会比较慢：<br>Python代码：<br>def fib(n):<br>    if n&lt;=1:<br>        return n<br>    else:<br>        return fib(n-1)+fib(n-2)#递归</p>
+<p>def main(n):<br>    if n&gt;0:<br>        print((fib(n))%100007)<br>    else:<br>        print(‘error!’)</p>
+<p>n = int(input(‘输入n：’))<br>main(n)</p>
+<p>第二是保存状态动态规划思想进行迭代：<br>Python代码：<br>def main(n):<br>    a1 = 1<br>    a2 = 1<br>    if n==1 or n == 2:<br>        return 1<br>    else:<br>        for i in range(2,n):<br>            a3 = a1+a2<br>            a1 = a2<br>            a2 = a3</p>
+<pre><code>    print(&#39;第n项为：&#39;,a3%100007)</code></pre>
+<p>n = int(input(‘输入n：’))<br>main(n)</p>
+<p>第三种是使用python的生成器语法：<br>def loop(n):<br>    a,b = 0,1<br>    while n&gt;0:<br>        a,b = b,a+b<br>        n-=1<br>        yield a#每次都会向生成器外返回本次的斐波那契数列第n项</p>
+<p>n = int(input(‘输入n：’))<br>for i in loop(n):<br>print(i)</p>
+<p>第四种使用类对象的双下划线的魔法方法，实际上只是模拟了for或者while循环而已<br>class Fib(object):<br>    def <strong>init</strong>(self,n):#这里的参数指的是生成的第n个斐波那契数<br>        self.n = n<br>        self.current = 0<br>        self.a = 0<br>        self.b = 1<br>    def <strong>next</strong>(self):<br>        #获取下一个数<br>        if self.current &lt; self.n:<br>            self.a,self.b =  self.b,self.a+self.b<br>            self.current += 1<br>            return self.a<br>        else:<br>            raise StopIteration#抛出异常，停止上面的迭代<br>    def <strong>iter</strong>(self):<br>        #迭代器返回自身<br>        return self</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    fib = Fib(15)<br>    for n in fib:<br>        print(n)</p>
+<p>第五种方法：使用python自带的numpy科学计算库，实现矩阵快速幂计算斐波那契数列<br>优化斐波那契数列的递推式，实际上就是一个相同的矩阵“1 1：1 0”与斐波那契数列的第0项与第一项相乘，具体可以使用一张图来解释<br> <img src= "/img/loading.gif" data-src="https://img-blog.csdnimg.cn/20200422195741277.png" alt="在这里插入图片描述"></p>
+<p>Python代码：<br>def tool(n):<br>    mat = np.matrix(“1 1;1 0”,dtype=’int64’)#创建矩阵”1 1:1 0”<br>    return np.linalg.matrix_power(mat,n)#使用numpy内置方法计算矩阵幂</p>
+<p>def matrix(n):<br>    result = []<br>    for i in range(n):<br>        result.append(np.array(tool(i))[0][0])<br>    return result</p>
+<p>n = int(input(“输入n：”))<br>matrix(n)</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:2218684601@qq.com">linblock</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://lzxandcyx.cn/2020/07/31/%E7%AE%97%E6%B3%954-14/">http://lzxandcyx.cn/2020/07/31/%E7%AE%97%E6%B3%954-14/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/07/31/%E7%AE%97%E6%B3%954-7/"><img class="prev-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">算法4.7</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/31/%E7%AE%97%E6%B3%954-20/"><img class="next-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">算法4.20</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By linblock</div><div class="framework-info"><span>Driven </span><a target="_blank" rel="noopener" href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font_plus" title="Increase Font Size"><i class="fas fa-plus"></i></button><button id="font_minus" title="Decrease Font Size"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="Setting"><i class="fas fa-cog"></i></button><button id="go-up" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script></body></html>
